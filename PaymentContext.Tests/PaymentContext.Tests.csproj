@@ -16,4 +16,9 @@
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PaymentContext.Shared\PaymentContext.Shared.csproj" />
+    <ProjectReference Include="..\PaymentContext.Domain\PaymentContext.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
