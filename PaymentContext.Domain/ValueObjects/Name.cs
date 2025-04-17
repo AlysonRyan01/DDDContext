@@ -10,8 +10,11 @@ public class Name : ValueObject
         FirstName = firstName;
         LastName = lastName;
 
-        AddNotifications(new Contract<object>()
-            .Requires());
+        AddNotifications(new Contract<Name>()
+            .Requires()
+            .IsNotNullOrEmpty(FirstName, "FirstName", "O nome é obrigatório")
+            .IsNotNullOrEmpty(LastName, "LastName", "O sobrenome é obrigatório")
+        );
     }
 
     public string FirstName { get; private set; }
