@@ -25,18 +25,16 @@ public class Student : Entity
     public IReadOnlyCollection<Subscription> Subscriptions { get {return _subscriptions.ToArray(); } }
 
     public void AddSubscription(Subscription subscription)
-    {
-       var hasSubscriptionActive = false;
-       
-       foreach(var sub in _subscriptions)
-       {
-            if(sub.Active)
-                hasSubscriptionActive = true;
-       }
+    {        
+        var hasSubscriptionActive = _subscriptions.Any(sub => sub.Active);
 
-       if (hasSubscriptionActive)
-            AddNotification("Student.Subscriptions", "Voce já tem uma assinatura ativa");
+        AddNotifications(new Contract<Student>()
+            .Requires()
+            .IsFalse(hasSubscriptionActive, "Student.Subscriptions", "Voce já tem uma assinatura ativa")
+            .AreNotEquals(0, subscription.Payments.Count, "Student.Subscriptions.Payments", "Essa assinatura não possui pagamentos")
+            );
 
-        
+        if (IsValid)
+            _subscriptions.Add(subscription);
     }
 }
