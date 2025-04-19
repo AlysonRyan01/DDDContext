@@ -17,13 +17,13 @@ public class Address : ValueObject
 
         AddNotifications(new Contract<Address>()
             .Requires()
-            .IsNullOrWhiteSpace(street, "A rua precisa ter pelo menos 1 caractere.")
-            .IsNullOrWhiteSpace(number, "O número precisa ter pelo menos 1 caractere.")
-            .IsNullOrWhiteSpace(neighborhood, "O bairro precisa ter pelo menos 1 caractere.")
-            .IsNullOrWhiteSpace(city, "A cidade precisa ter pelo menos 1 caractere.")
-            .IsNullOrWhiteSpace(state, "O estado precisa ter pelo menos 1 caractere.")
-            .IsNullOrWhiteSpace(country, "O país precisa ter pelo menos 1 caractere.")
-            .IsNullOrWhiteSpace(zipCode, "O CEP precisa ter pelo menos 1 caractere.")
+            .IsNotNullOrWhiteSpace(street, "A rua precisa ter pelo menos 1 caractere.")
+            .IsNotNullOrWhiteSpace(number, "O número precisa ter pelo menos 1 caractere.")
+            .IsNotNullOrWhiteSpace(neighborhood, "O bairro precisa ter pelo menos 1 caractere.")
+            .IsNotNullOrWhiteSpace(city, "A cidade precisa ter pelo menos 1 caractere.")
+            .IsNotNullOrWhiteSpace(state, "O estado precisa ter pelo menos 1 caractere.")
+            .IsNotNullOrWhiteSpace(country, "O país precisa ter pelo menos 1 caractere.")
+            .IsNotNullOrWhiteSpace(zipCode, "O CEP precisa ter pelo menos 1 caractere.")
         );
     }
 
